@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        <form action="#" method="post" id="message-form" v-on:submit.prevent="stopForm">
+            <input type="text" v-model="myInput">
+            <input type="submit" value="Send Message">
+        </form>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    myInput: '',
+                    connection: null
+                }
+            },
+            methods:{
+                stopForm() {
+                    this.connection.send(this.myInput)
+                    console.log('Sent:' + this.myInput)
+                    this.myInput = ''
+                }
+            },
+            mounted() {
+                this.connection = new WebSocket('ws://localhost:3200')
+
+                this.connection.addEventListener('message', function(message) {
+                        console.log('Received:' + message.data)
+                    })
+                    
+
+            }
+        })
+    </script>
+
+</body>
+</html>

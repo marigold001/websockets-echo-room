@@ -1,0 +1,24 @@
+#app {
+    text-align:center;
+    margin: 200px;
+    input[type="text"] {
+        width: 50%;
+        padding: 10px;
+        margin: 5px;
+    }
+    input[type="text"]::placeholder {
+        text-align: center;
+    }
+    ul {
+        position: relative;
+        border: 12px solid grey;
+        width: 50%;
+        padding: 0px;
+        margin: 10px auto;
+        text-align: left;
+    }
+    input[type="submit"], button {
+        width: 25%;
+        margin: 5px 10px;
+    }
+}
